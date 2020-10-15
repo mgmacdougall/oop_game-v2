@@ -21,7 +21,7 @@ class Game {
 
 	handleInteraction(e) {
 		let key = this.getKeyStroke(e);
-		let hasLetter = phrase.phraseCheckLetter(key); // checks the value and will show if available
+		let hasLetter = phrase.checkLetter(key); // checks the value and will show if available
 
 		if (hasLetter) {
 			phrase.showMatchedLetter(key);

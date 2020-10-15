@@ -24,7 +24,7 @@ class Phrase {
 	};
 
 	// checks if the phrase exists in the game board
-	phraseCheckLetter(letter) {
+	checkLetter(letter) {
 		let letters = phraseContainer.getElementsByClassName(`${letter}`);
 		if (letters.length > 0) {
 			return true;
