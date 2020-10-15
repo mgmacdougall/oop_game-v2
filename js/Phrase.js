@@ -10,7 +10,6 @@ class Phrase {
 		const splitPhrase = this.phrase.split('');
 		splitPhrase.forEach((char) => {
 			const letterContainer = document.createElement('li');
-			// letterContainer.className = '';
 			if (char === ' ') {
 				letterContainer.className = 'space';
 				letterContainer.innerText = ' ';
