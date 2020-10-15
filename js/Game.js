@@ -1,13 +1,7 @@
 class Game {
 	constructor() {
 		this.missed = 0;
-		this.phrases = [
-			'Posting is toasting',
-			'Your limitation is your imagingation',
-			'Go deep',
-			'Dream it',
-			'One step at a time',
-		];
+		this.phrases = ['Posting is toasting', 'Keep Dry', 'Go deep', 'Dream it', 'One step at a time'];
 		this.activePhrase = this.getRandomPhrase();
 	}
 
@@ -31,6 +25,10 @@ class Game {
 		if (hasLetter) {
 			phrase.showMatchedLetter(key);
 			this.changeKeyToCorrectSelected(key);
+			// need here to check that there might be a win here
+			if (this.checkForWin()) {
+				this.gameOver();
+			}
 		} else {
 			this.changeToIncorrectSelected(key);
 			this.removeLife();
@@ -102,8 +100,20 @@ class Game {
 			gameOverMessage.innerText = 'You lost :(';
 			this.resetGame();
 		}
-
 		gameOverMessage.style.visibility = 'visible';
+		this.displayAnimation();
+	}
+
+	// Now add a div to the below the btn__reset and then another div
+	// with the aninmation to scroll across the page
+	displayAnimation() {
+		let mainElement = document.getElementById('winlose');
+		if (!mainElement) {
+			let animationContainer = document.createElement('p');
+			animationContainer.id = 'winlose';
+			animationContainer.innerText = 'Press Start Game to  play again';
+			overlay.appendChild(animationContainer);
+		}
 	}
 
 	// Reset after complete added to each of the paths
@@ -124,10 +134,9 @@ class Game {
 		}
 
 		// Reset game board resets all the showing class elements to hide
-		let shownLetters = phraseContainer.getElementsByClassName('show');
+		let shownLetters = phraseContainer.getElementsByClassName('letter');
 		for (let letterItem of [...shownLetters]) {
-			letterItem.classList.remove('show');
-			letterItem.classList.add('hide');
+			letterItem.remove();
 		}
 	}
 }

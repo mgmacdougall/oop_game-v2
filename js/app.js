@@ -2,7 +2,6 @@
 const startBtn = document.getElementById('btn__reset');
 const overlay = document.getElementById('overlay');
 const gameOverMessage = document.getElementById('game-over-message');
-
 const keyboard = document.getElementById('qwerty');
 const allKeys = keyboard.getElementsByClassName('key');
 
