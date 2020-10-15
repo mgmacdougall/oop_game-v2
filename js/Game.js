@@ -25,7 +25,6 @@ class Game {
 	}
 
 	handleInteraction(e) {
-		// if(e.type=="Mouse")
 		let key = this.getKeyStroke(e);
 		let hasLetter = phrase.phraseCheckLetter(key); // checks the value and will show if available
 
@@ -96,14 +95,15 @@ class Game {
 			overlay.style.display = '';
 			overlay.classList.add('win');
 			gameOverMessage.innerText = 'You won :)';
+			this.resetGame();
 		} else {
 			overlay.style.display = '';
 			overlay.classList.add('lose');
 			gameOverMessage.innerText = 'You lost :(';
+			this.resetGame();
 		}
 
 		gameOverMessage.style.visibility = 'visible';
-		this.resetGame();
 	}
 
 	// Reset after complete added to each of the paths
@@ -121,6 +121,13 @@ class Game {
 			} else if (keyItem.classList.value.includes('wrong')) {
 				keyItem.classList.remove('wrong');
 			}
+		}
+
+		// Reset game board resets all the showing class elements to hide
+		let shownLetters = phraseContainer.getElementsByClassName('show');
+		for (let letterItem of [...shownLetters]) {
+			letterItem.classList.remove('show');
+			letterItem.classList.add('hide');
 		}
 	}
 }
