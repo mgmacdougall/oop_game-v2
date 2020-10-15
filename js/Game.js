@@ -2,7 +2,7 @@ class Game {
 	constructor() {
 		this.missed = 0;
 		this.phrases = ['Posting is toasting', 'Keep Dry', 'Go deep', 'Dream it', 'One step at a time'];
-		this.activePhrase = this.getRandomPhrase();
+		this.activePhrase = null;
 	}
 
 	startGame() {
@@ -15,6 +15,7 @@ class Game {
 	}
 
 	getActivePhrase() {
+		this.activePhrase = this.getRandomPhrase();
 		return this.activePhrase;
 	}
 
