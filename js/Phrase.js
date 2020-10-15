@@ -5,7 +5,7 @@ class Phrase {
 		this.phrase = phrase.toLowerCase();
 	}
 
-	// This is the phrase to display
+	// Adds the phrase to be displayed
 	addPhraseToDisplay = () => {
 		const splitPhrase = this.phrase.split('');
 		splitPhrase.forEach((char) => {
@@ -23,6 +23,7 @@ class Phrase {
 		});
 	};
 
+	// checks if the phrase exists in the game board
 	phraseCheckLetter(letter) {
 		let letters = phraseContainer.getElementsByClassName(`${letter}`);
 		if (letters.length > 0) {
@@ -31,6 +32,7 @@ class Phrase {
 		return false;
 	}
 
+	// displays if the letter if matched
 	showMatchedLetter(letter) {
 		let lettersInBoard = phraseContainer.getElementsByClassName(`${letter}`);
 		for (let i = 0; i < lettersInBoard.length; i++) {

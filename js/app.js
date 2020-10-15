@@ -7,7 +7,6 @@ const keyboard = document.getElementById('qwerty');
 const allKeys = keyboard.getElementsByClassName('key');
 
 const scoreboard = document.getElementById('scoreboard');
-
 const phraseBoard = document.getElementsByClassName('letter');
 
 // Dependant Globals for Game and Phrase

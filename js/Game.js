@@ -68,6 +68,7 @@ class Game {
 		}
 	}
 
+	// remove a life if the user makes incorrect guess
 	removeLife() {
 		let livesImages = scoreboard.getElementsByTagName('img');
 		if (this.missed == 4) {
@@ -78,6 +79,7 @@ class Game {
 		}
 	}
 
+	// checks for a game win
 	checkForWin() {
 		for (let item of [...phraseBoard]) {
 			if (item.classList.value.includes('hide')) {
@@ -87,6 +89,7 @@ class Game {
 		return true;
 	}
 
+	// checks if the game is over
 	gameOver() {
 		let gameResult = this.checkForWin();
 		if (gameResult) {
