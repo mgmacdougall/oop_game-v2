@@ -100,5 +100,24 @@ class Game {
 		}
 
 		gameOverMessage.style.visibility = 'visible';
+		this.resetGame();
+	}
+
+	// Reset after complete added to each of the paths
+	resetGame() {
+		// Reset Scoreboard
+		let livesImages = scoreboard.getElementsByTagName('img');
+		for (let img of livesImages) {
+			img.src = 'images/liveHeart.png';
+		}
+
+		// Reset the keyboard
+		for (let keyItem of [...allKeys]) {
+			if (keyItem.classList.value.includes('chosen')) {
+				keyItem.classList.remove('chosen');
+			} else if (keyItem.classList.value.includes('wrong')) {
+				keyItem.classList.remove('wrong');
+			}
+		}
 	}
 }
