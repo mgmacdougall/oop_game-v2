@@ -1,4 +1,6 @@
 class Game {
+	phraseClass;
+
 	constructor() {
 		this.missed = 0;
 		this.phrases = ['Posting is toasting', 'Keep Dry', 'Go deep', 'Dream it', 'One step at a time'];
@@ -7,6 +9,9 @@ class Game {
 
 	startGame() {
 		overlay.style.display = 'none';
+		let currentPhrase = this.getActivePhrase();
+		this.phraseClass = new Phrase(currentPhrase);
+		this.phraseClass.addPhraseToDisplay();
 	}
 
 	getRandomPhrase() {
@@ -19,13 +24,13 @@ class Game {
 		return this.activePhrase;
 	}
 
-	handleInteraction(e) {
-		let key = this.getKeyStroke(e);
-		let hasLetter = phrase.checkLetter(key); // checks the value and will show if available
+	handleInteraction(key) {
+		let hasLetter = this.phraseClass.checkLetter(key); // checks the value and will show if available
 
 		if (hasLetter) {
-			phrase.showMatchedLetter(key);
+			this.phraseClass.showMatchedLetter(key);
 			this.changeKeyToCorrectSelected(key);
+
 			// need here to check that there might be a win here
 			if (this.checkForWin()) {
 				this.gameOver();
@@ -33,18 +38,6 @@ class Game {
 		} else {
 			this.changeToIncorrectSelected(key);
 			this.removeLife();
-		}
-	}
-
-	// Handles returning the key from either a mouse click or keyboard action
-	getKeyStroke(e) {
-		let eventType = e.type;
-		if (eventType == 'click') {
-			return e.target.innerText;
-		} else if (eventType == 'keyup') {
-			return e.key;
-		} else {
-			return null;
 		}
 	}
 
