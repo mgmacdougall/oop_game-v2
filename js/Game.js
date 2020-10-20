@@ -9,7 +9,7 @@ class Game {
 
 	startGame() {
 		overlay.style.display = 'none';
-		let currentPhrase = this.getActivePhrase();
+		let currentPhrase = this.getRandomPhrase();
 		this.phraseClass = new Phrase(currentPhrase);
 		this.phraseClass.addPhraseToDisplay();
 	}
@@ -17,11 +17,6 @@ class Game {
 	getRandomPhrase() {
 		let aRandomPhrase = Math.floor(Math.random() * this.phrases.length);
 		return this.phrases[aRandomPhrase];
-	}
-
-	getActivePhrase() {
-		this.activePhrase = this.getRandomPhrase();
-		return this.activePhrase;
 	}
 
 	handleInteraction(key) {
@@ -33,7 +28,7 @@ class Game {
 
 			// need here to check that there might be a win here
 			if (this.checkForWin()) {
-				this.gameOver();
+				this.gameOver(true);
 			}
 		} else {
 			this.changeToIncorrectSelected(key);
@@ -63,7 +58,7 @@ class Game {
 	removeLife() {
 		let livesImages = scoreboard.getElementsByTagName('img');
 		if (this.missed == 4) {
-			this.gameOver();
+			this.gameOver(false);
 		} else {
 			livesImages[this.missed].src = 'images/lostHeart.png';
 			this.missed++;
@@ -81,18 +76,16 @@ class Game {
 	}
 
 	// checks if the game is over
-	gameOver() {
-		let gameResult = this.checkForWin();
-		if (gameResult) {
+	gameOver(won) {
+		this.resetGame();
+		if (won) {
 			overlay.style.display = '';
 			overlay.classList.add('win');
 			gameOverMessage.innerText = 'You won :)';
-			this.resetGame();
 		} else {
 			overlay.style.display = '';
 			overlay.classList.add('lose');
 			gameOverMessage.innerText = 'You lost :(';
-			this.resetGame();
 		}
 		gameOverMessage.style.visibility = 'visible';
 		this.displayAnimation();

@@ -13,6 +13,7 @@ let game;
 
 // Binds the click event for the mouse once the DOM is loaded
 document.addEventListener('DOMContentLoaded', bindKeyboardKeys());
+
 // Creates an event listenter for each of the values
 function bindKeyboardKeys() {
 	for (let i = 0; i < allKeys.length; i++) {
@@ -30,7 +31,7 @@ startBtn.addEventListener('click', (e) => {
 
 // Listens for keyup events and runs the handle action
 document.addEventListener('keyup', (e) => {
-	if (overlay.style.display == 'hideen') {
+	if (overlay.style.display == 'none') {
 		game.handleInteraction(e.key);
 	}
 });
