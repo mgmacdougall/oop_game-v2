@@ -86,8 +86,8 @@ class Game {
 			overlay.classList.add('win');
 			gameOverMessage.innerText = 'You won :)';
 		} else {
-			overlay.style.display = '';
 			overlay.classList.add('lose');
+			overlay.style.display = '';
 			gameOverMessage.innerText = 'You lost :(';
 		}
 		gameOverMessage.style.visibility = 'visible';
@@ -130,6 +130,9 @@ class Game {
 			letterItem.remove();
 		}
 
-		// Reset all the
+		// Reset the overlay by removing all overlay class list values
+		for (let item of overlay.classList) {
+			overlay.classList.remove(item);
+		}
 	}
 }
