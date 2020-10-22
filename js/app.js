@@ -16,9 +16,12 @@ document.addEventListener('DOMContentLoaded', bindKeyboardKeys());
 
 // Creates an event listenter for each of the values
 function bindKeyboardKeys() {
+	const keyRegex = /^\w$/g;
 	for (let i = 0; i < allKeys.length; i++) {
 		allKeys[i].addEventListener('click', (e) => {
-			game.handleInteraction(e.target.innerHTML);
+			if (keyRegex.test(e.target.innerText)) {
+				game.handleInteraction(e.target.innerText);
+			}
 		});
 	}
 }
@@ -32,6 +35,9 @@ startBtn.addEventListener('click', (e) => {
 // Listens for keyup events and runs the handle action
 document.addEventListener('keyup', (e) => {
 	if (overlay.style.display == 'none') {
+		if (e.keycode < 65 || e.keycode > 90) {
+			return;
+		}
 		game.handleInteraction(e.key);
 	}
 });

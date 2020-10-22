@@ -9,8 +9,8 @@ class Game {
 
 	startGame() {
 		overlay.style.display = 'none';
-		let currentPhrase = this.getRandomPhrase();
-		this.phraseClass = new Phrase(currentPhrase);
+		this.activePhrase = this.getRandomPhrase();
+		this.phraseClass = new Phrase(this.activePhrase);
 		this.phraseClass.addPhraseToDisplay();
 	}
 
@@ -32,7 +32,6 @@ class Game {
 			}
 		} else {
 			this.changeToIncorrectSelected(key);
-			this.removeLife();
 		}
 	}
 
@@ -40,6 +39,7 @@ class Game {
 	changeKeyToCorrectSelected(key) {
 		for (let keyItem of [...allKeys]) {
 			if (keyItem.innerText == key) {
+				keyItem.setAttribute('disabled', '');
 				return keyItem.classList.add('chosen');
 			}
 		}
@@ -48,8 +48,11 @@ class Game {
 	// change key to correct selection
 	changeToIncorrectSelected(key) {
 		for (let keyItem of [...allKeys]) {
-			if (keyItem.innerText == key) {
-				return keyItem.classList.add('wrong');
+			if (keyItem.innerText == key && keyItem.disabled === false) {
+				keyItem.classList.add('wrong');
+				keyItem.disabled = true;
+				this.removeLife();
+				return;
 			}
 		}
 	}
