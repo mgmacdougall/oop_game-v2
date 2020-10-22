@@ -116,6 +116,7 @@ class Game {
 
 		// Reset the keyboard
 		for (let keyItem of [...allKeys]) {
+			keyItem.disabled = false;
 			if (keyItem.classList.value.includes('chosen')) {
 				keyItem.classList.remove('chosen');
 			} else if (keyItem.classList.value.includes('wrong')) {
@@ -128,5 +129,7 @@ class Game {
 		for (let letterItem of [...shownLetters]) {
 			letterItem.remove();
 		}
+
+		// Reset all the
 	}
 }

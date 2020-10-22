@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', bindKeyboardKeys());
 
 // Creates an event listenter for each of the values
 function bindKeyboardKeys() {
-	const keyRegex = /^\w$/g;
 	for (let i = 0; i < allKeys.length; i++) {
 		allKeys[i].addEventListener('click', (e) => {
+			const keyRegex = /^\w$/g;
 			if (keyRegex.test(e.target.innerText)) {
 				game.handleInteraction(e.target.innerText);
 			}
