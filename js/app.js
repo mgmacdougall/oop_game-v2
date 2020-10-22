@@ -8,7 +8,6 @@ const allKeys = keyboard.getElementsByClassName('key');
 const scoreboard = document.getElementById('scoreboard');
 const phraseBoard = document.getElementsByClassName('letter');
 
-// Dependant Globals for Game and Phrase
 let game;
 
 // Binds the click event for the mouse once the DOM is loaded
