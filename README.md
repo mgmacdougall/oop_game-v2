@@ -2,14 +2,12 @@
 
 ## Overview:
 
-The Guessing game is a game where you will be given a covered phrase in a game board.
+The Guessing game is a game where you will be display a phrase on game board.
 Your job is to use the keyboard to try and guess the phrase in 5 guesses or less.
 
-If you do guess the phrase in 5 turns or less you win.
-If not you lose.
+If you do guess the phrase in 5 turns or less you win, if not you lose.
 
 ## Basic Structure:
-
 The project is built using HTML/JS/CSS.
 The JS Classes are built around OOP JS project.
 
